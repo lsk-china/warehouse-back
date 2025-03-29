@@ -11,9 +11,9 @@
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="format-detection" content="telephone=no">
         <link rel="icon" href="/favicon.ico">
-        <link href="//unpkg.com/layui@2.10.1/dist/css/layui.css" rel="stylesheet">
+        <link href="//unpkg.com/layui@2.10.2/dist/css/layui.css" rel="stylesheet">
         <link rel="stylesheet" href="/resources/css/public.css" media="all" />
-        <script src="//unpkg.com/layui@2.10.1/dist/layui.js"></script>
+        <script src="//unpkg.com/layui@2.10.2/dist/layui.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <style>
             * {
@@ -44,6 +44,9 @@
                 display: flex;
                 flex-direction: column;
             }
+            .goods-card:hover {
+                background-color: #eee;
+            }
             .layui-flow-more {
                 flex-basis: 100%;
             }
@@ -56,13 +59,71 @@
                 align-self: flex-start;
                 padding: 0 10px;
             }
+            #purchaseDialog {
+                width: 200px;
+                padding: 10px
+            }
+            .purchaseButton {
+                margin-top: 10px;
+                float: right;
+            }
         </style>
     </head>
     <body>
         <div id="mainContainer">
             <div class="goods-infinite-scroll" id="goodsInfiniteScroll"></div>
+            <div style="display: none;" id="purchaseDialog">
+                <div class="layui-input-wrap">
+                    <input class="layui-input" type="number" lay-affix="number" id="amount" min="1" max="1" value="1"/>
+                </div>
+                <button class="layui-btn layui-bg-blue purchaseButton" id="purchaseButton">提交</button>
+            </div>
         </div>
         <script>
+            function message(type, message) {
+                layui.use(() => {
+                    let layer = layui.layer
+                    layer.open({
+
+                    })
+                })
+            }
+
+            function openBuyDialog(goodsId, amountMax) {
+                $('#purchaseDialog').on('click', () => {
+                    layui.use(function () {
+                        let layer = layui.layer
+                        layer.closeAll('page')
+                        $('#purchaseDialog').hide()
+                        let amount = $('#amount').val()
+                        $.ajax({
+                            url: '/sale/batch',
+                            type: 'get',
+                            data: {
+                                goodsId: goodsId,
+                                amount: amount
+                            },
+                            success: function (res) {
+                                if (res.data.code === 200) {
+
+                                }
+                            }
+                        })
+                    })
+                })
+                layui.use(function () {
+                    let amountElement = document.getElementById('amount')
+                    amountElement.max = amountMax
+                    let layer = layui.layer
+                    layer.open({
+                        type: 1,
+                        shade: false,
+                        content: $('#purchaseDialog'),
+                        title: '选择数量'
+                    })
+                })
+            }
+
             window.addEventListener('load', () => {
                 layui.use(function() {
                     let flow = layui.flow
@@ -84,11 +145,11 @@
                                     for (let goods of resp.data) {
                                         console.log(goods)
                                         elements += `
-<div class="goods-card layui-panel">
+<div class="goods-card layui-panel" onclick="openBuyDialog(${goods.id}, ${goods.number})">
     <img class="goods-img" src="${goods.goodsimg}"/>
     <span class="goods-name">${goods.goodsname}</span>
     <span class="goods-price">价格: ${goods.price}</span>
-    <span class="goods-available">库存: ${goods.available}</span>
+    <span class="goods-available">库存: ${goods.number}</span>
 </div>
                                         `
                                     }
