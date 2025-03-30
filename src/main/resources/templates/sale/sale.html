@@ -36,6 +36,8 @@
                 flex-direction: row;
                 justify-content: flex-start;
                 overflow-y: scroll;
+                height: auto;
+                align-content: flex-start;
             }
             .goods-card {
                 width: 200px;
@@ -43,6 +45,7 @@
                 padding: 10px;
                 display: flex;
                 flex-direction: column;
+                height: 250px;
             }
             .goods-card:hover {
                 background-color: #eee;
@@ -67,6 +70,18 @@
                 margin-top: 10px;
                 float: right;
             }
+            #message {
+                position: absolute;
+                top: 50px;
+                box-shadow: none;
+                width: 100px;
+            }
+            .message-success {
+                background: #16b777;
+            }
+            .message-fail {
+                background: #ff5722;
+            }
         </style>
     </head>
     <body>
@@ -78,19 +93,17 @@
                 </div>
                 <button class="layui-btn layui-bg-blue purchaseButton" id="purchaseButton">提交</button>
             </div>
+            <div id="message" style="display: none;">
+                <span id="messageContent"></span>
+            </div>
         </div>
         <script>
             function message(type, message) {
-                layui.use(() => {
-                    let layer = layui.layer
-                    layer.open({
-
-                    })
-                })
+                alert(message)
             }
 
             function openBuyDialog(goodsId, amountMax) {
-                $('#purchaseDialog').on('click', () => {
+                $('#purchaseButton').on('click', () => {
                     layui.use(function () {
                         let layer = layui.layer
                         layer.closeAll('page')
@@ -103,9 +116,25 @@
                                 goodsId: goodsId,
                                 amount: amount
                             },
-                            success: function (res) {
-                                if (res.data.code === 200) {
-
+                            success: function (resp) {
+                                switch (JSON.parse(resp).message) {
+                                    case 'Success':
+                                        let origAmount = $("#goods-card-" + goodsId).find(".goods-available").text().substring(3)
+                                        $("#goods-card-"+goodsId).find(".goods-available").text(`库存:${parseInt(origAmount) - amount}`)
+                                        break
+                                    case 'Goods Not Found':
+                                        message('fail', '商品不存在')
+                                        break
+                                    case 'Not available':
+                                        message('fail', '商品不可用')
+                                        break
+                                    case 'Not enough number':
+                                        message('fail', '库存不足')
+                                        break
+                                    default:
+                                        console.log(resp)
+                                        message('fail', '未知错误')
+                                        break
                                 }
                             }
                         })
@@ -145,11 +174,11 @@
                                     for (let goods of resp.data) {
                                         console.log(goods)
                                         elements += `
-<div class="goods-card layui-panel" onclick="openBuyDialog(${goods.id}, ${goods.number})">
+<div class="goods-card layui-panel" id="goods-card-${goods.id}" onclick="openBuyDialog(${goods.id}, ${goods.number})">
     <img class="goods-img" src="${goods.goodsimg}"/>
     <span class="goods-name">${goods.goodsname}</span>
-    <span class="goods-price">价格: ${goods.price}</span>
-    <span class="goods-available">库存: ${goods.number}</span>
+    <span class="goods-price">价格:${goods.price}</span>
+    <span class="goods-available">库存:${goods.number}</span>
 </div>
                                         `
                                     }
