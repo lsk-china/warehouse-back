@@ -98,6 +98,7 @@
             </div>
         </div>
         <script>
+            let operating = false
             function message(type, message) {
                 alert(message)
             }
@@ -105,39 +106,47 @@
             function openBuyDialog(goodsId, amountMax) {
                 $('#purchaseButton').on('click', () => {
                     layui.use(function () {
-                        let layer = layui.layer
-                        layer.closeAll('page')
-                        $('#purchaseDialog').hide()
-                        let amount = $('#amount').val()
-                        $.ajax({
-                            url: '/sale/batch',
-                            type: 'get',
-                            data: {
-                                goodsId: goodsId,
-                                amount: amount
-                            },
-                            success: function (resp) {
-                                switch (JSON.parse(resp).message) {
-                                    case 'Success':
-                                        let origAmount = $("#goods-card-" + goodsId).find(".goods-available").text().substring(3)
-                                        $("#goods-card-"+goodsId).find(".goods-available").text(`库存:${parseInt(origAmount) - amount}`)
-                                        break
-                                    case 'Goods Not Found':
-                                        message('fail', '商品不存在')
-                                        break
-                                    case 'Not available':
-                                        message('fail', '商品不可用')
-                                        break
-                                    case 'Not enough number':
-                                        message('fail', '库存不足')
-                                        break
-                                    default:
-                                        console.log(resp)
-                                        message('fail', '未知错误')
-                                        break
-                                }
+                            if (! operating) {
+                                operating = true;
+                                let layer = layui.layer
+                                layer.closeAll('page')
+                                $('#purchaseDialog').hide()
+                                let amount = $('#amount').val()
+                                console.log(amount)
+                                $.ajax({
+                                    url: '/sale/batch',
+                                    type: 'get',
+                                    data: {
+                                        goodsId: goodsId,
+                                        amount: amount
+                                    },
+                                    success: function (resp) {
+                                        switch (JSON.parse(resp).message) {
+                                            case 'Success':
+                                                let origAmount = $("#goods-card-" + goodsId).find(".goods-available").text().substring(3)
+                                                console.log('origAmount: ' + origAmount + ' updated:' + (parseInt(origAmount) - amount))
+                                                $("#goods-card-" + goodsId).find(".goods-available").text(`库存:${parseInt(origAmount) - amount}`)
+                                                break
+                                            case 'Goods Not Found':
+                                                message('fail', '商品不存在')
+                                                break
+                                            case 'Not available':
+                                                message('fail', '商品不可用')
+                                                break
+                                            case 'Not enough number':
+                                                message('fail', '库存不足')
+                                                break
+                                            default:
+                                                console.log(resp)
+                                                message('fail', '未知错误')
+                                                break
+                                        }
+                                    }
+                                })
                             }
-                        })
+                            setTimeout(() => {
+                                operating = false
+                            }, 500)
                     })
                 })
                 layui.use(function () {
