@@ -42,4 +42,7 @@ public class BusinessController {
     public String toDeliverManager() {
         return "warehouse/deliver/deliverManager";
     }
+
+    @RequestMapping("toStatisticsFlow")
+    public String toStatisticsFlow() { return "warehouse/statistics/flow"; }
 }
