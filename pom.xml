@@ -13,7 +13,7 @@
 	<artifactId>warehouse</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>warehouse</name>
-	<description>仓库管理系统</description>
+	<description>商超进销存管理系统</description>
 
 	<properties>
 		<java.version>1.8</java.version>

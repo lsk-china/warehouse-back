@@ -72,12 +72,12 @@ CREATE TABLE `bus_deliver`  (
 -- ----------------------------
 -- Records of bus_deliver
 -- ----------------------------
-INSERT INTO `bus_deliver` VALUES (3, 1, NULL, '2021-04-12 10:32:44', '最终管理员', 2, '', 5.00, 7);
-INSERT INTO `bus_deliver` VALUES (5, 1, NULL, '2021-04-12 10:55:05', '最终管理员', 1000, '', 5.00, 3);
-INSERT INTO `bus_deliver` VALUES (6, 1, NULL, '2021-04-12 10:55:48', '最终管理员', 2, '', 5.00, 3);
-INSERT INTO `bus_deliver` VALUES (7, 1, NULL, '2021-04-12 11:41:16', '最终管理员', 2, '', 5.00, 2);
-INSERT INTO `bus_deliver` VALUES (8, 3, NULL, '2021-04-13 03:16:09', '最终管理员', 1000, 'test', 5.00, 5);
-INSERT INTO `bus_deliver` VALUES (9, 1, NULL, '2021-04-13 08:14:29', '最终管理员', 2, '', 5.00, 2);
+INSERT INTO `bus_deliver` VALUES (3, 1, NULL, '2021-04-12 10:32:44', '超级管理员', 2, '', 5.00, 7);
+INSERT INTO `bus_deliver` VALUES (5, 1, NULL, '2021-04-12 10:55:05', '超级管理员', 1000, '', 5.00, 3);
+INSERT INTO `bus_deliver` VALUES (6, 1, NULL, '2021-04-12 10:55:48', '超级管理员', 2, '', 5.00, 3);
+INSERT INTO `bus_deliver` VALUES (7, 1, NULL, '2021-04-12 11:41:16', '超级管理员', 2, '', 5.00, 2);
+INSERT INTO `bus_deliver` VALUES (8, 3, NULL, '2021-04-13 03:16:09', '超级管理员', 1000, 'test', 5.00, 5);
+INSERT INTO `bus_deliver` VALUES (9, 1, NULL, '2021-04-13 08:14:29', '超级管理员', 2, '', 5.00, 2);
 
 -- ----------------------------
 -- Table structure for bus_deliverback
@@ -177,7 +177,7 @@ CREATE TABLE `bus_outport`  (
 -- Records of bus_outport
 -- ----------------------------
 INSERT INTO `bus_outport` VALUES (9, 1, NULL, '2021-04-12 06:24:00', '超级管理员', 2.00, 2, '', 2);
-INSERT INTO `bus_outport` VALUES (10, 1, NULL, '2021-04-17 02:21:54', '最终管理员', 2.00, 2, '', 2);
+INSERT INTO `bus_outport` VALUES (10, 1, NULL, '2021-04-17 02:21:54', '超级管理员', 2.00, 2, '', 2);
 
 -- ----------------------------
 -- Table structure for bus_provider
@@ -251,43 +251,43 @@ CREATE TABLE `sys_loginfo`  (
 -- ----------------------------
 -- Records of sys_loginfo
 -- ----------------------------
-INSERT INTO `sys_loginfo` VALUES (256, '最终管理员-system', '0:0:0:0:0:0:0:1', '2021-04-12 11:34:50');
-INSERT INTO `sys_loginfo` VALUES (257, '最终管理员-system', '127.0.0.1', '2021-04-12 11:44:40');
-INSERT INTO `sys_loginfo` VALUES (258, '最终管理员-system', '0:0:0:0:0:0:0:1', '2021-04-12 11:45:46');
-INSERT INTO `sys_loginfo` VALUES (259, '最终管理员-system', '0:0:0:0:0:0:0:1', '2021-04-12 11:48:16');
-INSERT INTO `sys_loginfo` VALUES (260, '最终管理员-system', '0:0:0:0:0:0:0:1', '2021-04-12 11:50:50');
-INSERT INTO `sys_loginfo` VALUES (261, '最终管理员-system', '127.0.0.1', '2021-04-12 11:57:56');
-INSERT INTO `sys_loginfo` VALUES (262, '最终管理员-system', '0:0:0:0:0:0:0:1', '2021-04-12 12:36:53');
-INSERT INTO `sys_loginfo` VALUES (263, '最终管理员-system', '0:0:0:0:0:0:0:1', '2021-04-12 12:37:11');
-INSERT INTO `sys_loginfo` VALUES (264, '最终管理员-system', '0:0:0:0:0:0:0:1', '2021-04-12 12:42:27');
-INSERT INTO `sys_loginfo` VALUES (265, '最终管理员-system', '0:0:0:0:0:0:0:1', '2021-04-12 12:49:16');
-INSERT INTO `sys_loginfo` VALUES (266, '最终管理员-system', '0:0:0:0:0:0:0:1', '2021-04-12 13:20:37');
-INSERT INTO `sys_loginfo` VALUES (267, '最终管理员-system', '127.0.0.1', '2021-04-12 13:31:35');
-INSERT INTO `sys_loginfo` VALUES (268, '最终管理员-system', '0:0:0:0:0:0:0:1', '2021-04-12 13:40:23');
-INSERT INTO `sys_loginfo` VALUES (269, '最终管理员-system', '0:0:0:0:0:0:0:1', '2021-04-12 13:42:41');
-INSERT INTO `sys_loginfo` VALUES (270, '最终管理员-system', '127.0.0.1', '2021-04-12 13:43:37');
-INSERT INTO `sys_loginfo` VALUES (271, '最终管理员-system', '0:0:0:0:0:0:0:1', '2021-04-12 13:44:16');
-INSERT INTO `sys_loginfo` VALUES (272, '最终管理员-system', '127.0.0.1', '2021-04-12 13:48:04');
-INSERT INTO `sys_loginfo` VALUES (273, '最终管理员-system', '0:0:0:0:0:0:0:1', '2021-04-13 03:13:52');
-INSERT INTO `sys_loginfo` VALUES (274, '最终管理员-system', '0:0:0:0:0:0:0:1', '2021-04-13 08:14:07');
-INSERT INTO `sys_loginfo` VALUES (275, '最终管理员-system', '0:0:0:0:0:0:0:1', '2021-04-13 14:01:52');
-INSERT INTO `sys_loginfo` VALUES (276, '最终管理员-system', '0:0:0:0:0:0:0:1', '2021-04-14 08:46:27');
-INSERT INTO `sys_loginfo` VALUES (277, '最终管理员-system', '0:0:0:0:0:0:0:1', '2021-04-14 09:29:49');
-INSERT INTO `sys_loginfo` VALUES (278, '最终管理员-system', '0:0:0:0:0:0:0:1', '2021-04-14 12:01:53');
-INSERT INTO `sys_loginfo` VALUES (279, '最终管理员-system', '0:0:0:0:0:0:0:1', '2021-04-14 12:30:41');
-INSERT INTO `sys_loginfo` VALUES (280, '最终管理员-system', '0:0:0:0:0:0:0:1', '2021-04-14 14:35:39');
-INSERT INTO `sys_loginfo` VALUES (281, '最终管理员-system', '0:0:0:0:0:0:0:1', '2021-04-15 03:10:29');
-INSERT INTO `sys_loginfo` VALUES (282, '最终管理员-system', '0:0:0:0:0:0:0:1', '2021-04-15 06:31:02');
-INSERT INTO `sys_loginfo` VALUES (283, '最终管理员-system', '0:0:0:0:0:0:0:1', '2021-04-15 07:16:30');
-INSERT INTO `sys_loginfo` VALUES (284, '最终管理员-system', '0:0:0:0:0:0:0:1', '2021-04-15 11:46:50');
-INSERT INTO `sys_loginfo` VALUES (285, '最终管理员-system', '0:0:0:0:0:0:0:1', '2021-04-16 10:52:16');
-INSERT INTO `sys_loginfo` VALUES (286, '最终管理员-system', '0:0:0:0:0:0:0:1', '2021-04-16 12:57:31');
-INSERT INTO `sys_loginfo` VALUES (287, '最终管理员-system', '0:0:0:0:0:0:0:1', '2021-04-17 00:24:48');
+INSERT INTO `sys_loginfo` VALUES (256, '超级管理员-system', '0:0:0:0:0:0:0:1', '2021-04-12 11:34:50');
+INSERT INTO `sys_loginfo` VALUES (257, '超级管理员-system', '127.0.0.1', '2021-04-12 11:44:40');
+INSERT INTO `sys_loginfo` VALUES (258, '超级管理员-system', '0:0:0:0:0:0:0:1', '2021-04-12 11:45:46');
+INSERT INTO `sys_loginfo` VALUES (259, '超级管理员-system', '0:0:0:0:0:0:0:1', '2021-04-12 11:48:16');
+INSERT INTO `sys_loginfo` VALUES (260, '超级管理员-system', '0:0:0:0:0:0:0:1', '2021-04-12 11:50:50');
+INSERT INTO `sys_loginfo` VALUES (261, '超级管理员-system', '127.0.0.1', '2021-04-12 11:57:56');
+INSERT INTO `sys_loginfo` VALUES (262, '超级管理员-system', '0:0:0:0:0:0:0:1', '2021-04-12 12:36:53');
+INSERT INTO `sys_loginfo` VALUES (263, '超级管理员-system', '0:0:0:0:0:0:0:1', '2021-04-12 12:37:11');
+INSERT INTO `sys_loginfo` VALUES (264, '超级管理员-system', '0:0:0:0:0:0:0:1', '2021-04-12 12:42:27');
+INSERT INTO `sys_loginfo` VALUES (265, '超级管理员-system', '0:0:0:0:0:0:0:1', '2021-04-12 12:49:16');
+INSERT INTO `sys_loginfo` VALUES (266, '超级管理员-system', '0:0:0:0:0:0:0:1', '2021-04-12 13:20:37');
+INSERT INTO `sys_loginfo` VALUES (267, '超级管理员-system', '127.0.0.1', '2021-04-12 13:31:35');
+INSERT INTO `sys_loginfo` VALUES (268, '超级管理员-system', '0:0:0:0:0:0:0:1', '2021-04-12 13:40:23');
+INSERT INTO `sys_loginfo` VALUES (269, '超级管理员-system', '0:0:0:0:0:0:0:1', '2021-04-12 13:42:41');
+INSERT INTO `sys_loginfo` VALUES (270, '超级管理员-system', '127.0.0.1', '2021-04-12 13:43:37');
+INSERT INTO `sys_loginfo` VALUES (271, '超级管理员-system', '0:0:0:0:0:0:0:1', '2021-04-12 13:44:16');
+INSERT INTO `sys_loginfo` VALUES (272, '超级管理员-system', '127.0.0.1', '2021-04-12 13:48:04');
+INSERT INTO `sys_loginfo` VALUES (273, '超级管理员-system', '0:0:0:0:0:0:0:1', '2021-04-13 03:13:52');
+INSERT INTO `sys_loginfo` VALUES (274, '超级管理员-system', '0:0:0:0:0:0:0:1', '2021-04-13 08:14:07');
+INSERT INTO `sys_loginfo` VALUES (275, '超级管理员-system', '0:0:0:0:0:0:0:1', '2021-04-13 14:01:52');
+INSERT INTO `sys_loginfo` VALUES (276, '超级管理员-system', '0:0:0:0:0:0:0:1', '2021-04-14 08:46:27');
+INSERT INTO `sys_loginfo` VALUES (277, '超级管理员-system', '0:0:0:0:0:0:0:1', '2021-04-14 09:29:49');
+INSERT INTO `sys_loginfo` VALUES (278, '超级管理员-system', '0:0:0:0:0:0:0:1', '2021-04-14 12:01:53');
+INSERT INTO `sys_loginfo` VALUES (279, '超级管理员-system', '0:0:0:0:0:0:0:1', '2021-04-14 12:30:41');
+INSERT INTO `sys_loginfo` VALUES (280, '超级管理员-system', '0:0:0:0:0:0:0:1', '2021-04-14 14:35:39');
+INSERT INTO `sys_loginfo` VALUES (281, '超级管理员-system', '0:0:0:0:0:0:0:1', '2021-04-15 03:10:29');
+INSERT INTO `sys_loginfo` VALUES (282, '超级管理员-system', '0:0:0:0:0:0:0:1', '2021-04-15 06:31:02');
+INSERT INTO `sys_loginfo` VALUES (283, '超级管理员-system', '0:0:0:0:0:0:0:1', '2021-04-15 07:16:30');
+INSERT INTO `sys_loginfo` VALUES (284, '超级管理员-system', '0:0:0:0:0:0:0:1', '2021-04-15 11:46:50');
+INSERT INTO `sys_loginfo` VALUES (285, '超级管理员-system', '0:0:0:0:0:0:0:1', '2021-04-16 10:52:16');
+INSERT INTO `sys_loginfo` VALUES (286, '超级管理员-system', '0:0:0:0:0:0:0:1', '2021-04-16 12:57:31');
+INSERT INTO `sys_loginfo` VALUES (287, '超级管理员-system', '0:0:0:0:0:0:0:1', '2021-04-17 00:24:48');
 INSERT INTO `sys_loginfo` VALUES (288, '孙七-sq', '0:0:0:0:0:0:0:1', '2021-04-17 01:22:40');
-INSERT INTO `sys_loginfo` VALUES (289, '最终管理员-system', '0:0:0:0:0:0:0:1', '2021-04-17 01:23:02');
-INSERT INTO `sys_loginfo` VALUES (290, '最终管理员-system', '0:0:0:0:0:0:0:1', '2021-04-17 02:19:51');
+INSERT INTO `sys_loginfo` VALUES (289, '超级管理员-system', '0:0:0:0:0:0:0:1', '2021-04-17 01:23:02');
+INSERT INTO `sys_loginfo` VALUES (290, '超级管理员-system', '0:0:0:0:0:0:0:1', '2021-04-17 02:19:51');
 INSERT INTO `sys_loginfo` VALUES (291, '孙七-sq', '0:0:0:0:0:0:0:1', '2021-04-17 02:25:44');
-INSERT INTO `sys_loginfo` VALUES (292, '最终管理员-system', '0:0:0:0:0:0:0:1', '2021-04-22 02:41:45');
+INSERT INTO `sys_loginfo` VALUES (292, '超级管理员-system', '0:0:0:0:0:0:0:1', '2021-04-22 02:41:45');
 
 -- ----------------------------
 -- Table structure for sys_permission
@@ -311,9 +311,9 @@ CREATE TABLE `sys_permission`  (
 -- ----------------------------
 -- Records of sys_permission
 -- ----------------------------
-INSERT INTO `sys_permission` VALUES (1, 0, 'menu', '仓库物流管理系统', NULL, '&#xe668;', NULL, NULL, 1, 1, 1);
+INSERT INTO `sys_permission` VALUES (1, 0, 'menu', '商超进销存管理系统', NULL, '&#xe668;', NULL, NULL, 1, 1, 1);
 INSERT INTO `sys_permission` VALUES (2, 1, 'menu', '基础管理', NULL, '&#xe857;', '', '', 0, 2, 1);
-INSERT INTO `sys_permission` VALUES (3, 1, 'menu', '物流管理', NULL, '&#xe63c;', '', NULL, 0, 3, 1);
+INSERT INTO `sys_permission` VALUES (3, 1, 'menu', '进销存管理', NULL, '&#xe63c;', '', NULL, 0, 3, 1);
 INSERT INTO `sys_permission` VALUES (5, 1, 'menu', '系统管理', NULL, '&#xe614;', '', '', 0, 5, 1);
 INSERT INTO `sys_permission` VALUES (7, 2, 'menu', '客户管理', NULL, '&#xe651;', '/bus/toCustomerManager', '', 0, 7, 1);
 INSERT INTO `sys_permission` VALUES (8, 2, 'menu', '供应商管理', NULL, '&#xe658;', '/bus/toProviderManager', '', 0, 8, 1);
@@ -364,7 +364,7 @@ INSERT INTO `sys_permission` VALUES (84, 8, 'permission', '供应商删除', 'pr
 INSERT INTO `sys_permission` VALUES (91, 9, 'permission', '商品查询', 'goods:view', NULL, NULL, NULL, 0, 79, 1);
 INSERT INTO `sys_permission` VALUES (92, 9, 'permission', '商品添加', 'goods:create', NULL, NULL, NULL, 0, 80, 1);
 INSERT INTO `sys_permission` VALUES (94, 9, 'permission', '商品修改', 'goods:update', NULL, 'goods:update', NULL, 0, 81, 1);
-INSERT INTO `sys_permission` VALUES (96, 1, 'menu', '人事管理', NULL, '&#xe613;', '', NULL, 0, 83, 1);
+INSERT INTO `sys_permission` VALUES (96, 1, 'menu', '权限管理', NULL, '&#xe613;', '', NULL, 0, 83, 1);
 INSERT INTO `sys_permission` VALUES (97, 1, 'menu', '其他', '7', '&#xe631;', '', NULL, 0, 20, 1);
 INSERT INTO `sys_permission` VALUES (98, 3, 'menu', '商品发货', NULL, '&#xe609;', '/bus/toDelivertManager', NULL, 0, 16, 1);
 
@@ -384,10 +384,10 @@ CREATE TABLE `sys_role`  (
 -- ----------------------------
 -- Records of sys_role
 -- ----------------------------
-INSERT INTO `sys_role` VALUES (1, '最终管理员', '拥有所有菜单权限', 1, '2021-02-08 14:06:32');
+INSERT INTO `sys_role` VALUES (1, '超市管理员', '拥有所有菜单权限', 1, '2021-02-08 14:06:32');
 INSERT INTO `sys_role` VALUES (4, '基础管理员', '可以对基础管理进行操作', 1, '2021-02-09 14:28:32');
-INSERT INTO `sys_role` VALUES (5, '物流管理员', '可以对仓库进行操作', 1, '2021-02-09 14:29:33');
-INSERT INTO `sys_role` VALUES (6, '人事管理员', '人事管理员', 1, '2021-04-12 14:06:32');
+INSERT INTO `sys_role` VALUES (5, '进销存管理员', '可以对商超进行操作', 1, '2021-02-09 14:29:33');
+INSERT INTO `sys_role` VALUES (6, '权限管理员', '权限管理员', 1, '2021-04-12 14:06:32');
 INSERT INTO `sys_role` VALUES (7, '系统管理员', '可以对系统进行操作', 1, '2021-02-09 14:29:48');
 
 -- ----------------------------
@@ -589,7 +589,7 @@ CREATE TABLE `sys_user`  (
 -- ----------------------------
 -- Records of sys_user
 -- ----------------------------
-INSERT INTO `sys_user` VALUES (1, '最终管理员', 'system', '长沙', 1, '超级管理员', '532ac00e86893901af5f0be6b704dbc7', 1, '2021-04-12 11:06:34', NULL, 1, 1, 0, '../resources/images/defaultusertitle.jpg', '04A93C74C8294AA09A8B974FD1F4ECBB');
+INSERT INTO `sys_user` VALUES (1, '超级管理员', 'system', '长沙', 1, '超级管理员', '532ac00e86893901af5f0be6b704dbc7', 1, '2021-04-12 11:06:34', NULL, 1, 1, 0, '../resources/images/defaultusertitle.jpg', '04A93C74C8294AA09A8B974FD1F4ECBB');
 INSERT INTO `sys_user` VALUES (2, '李四', 'ls', '长沙', 0, '长沙', 'b07b848d69e0553b80e601d31571797e', 1, '2021-04-10 11:06:36', 1, 1, 2, 1, '../resources/images/defaultusertitle.jpg', 'FC1EE06AE4354D3FBF7FDD15C8FCDA71');
 INSERT INTO `sys_user` VALUES (3, '王五', 'ww', '长沙', 1, '管理员', '3c3f971eae61e097f59d52360323f1c8', 3, '2021-04-10 11:06:38', 2, 1, 3, 1, '../resources/images/defaultusertitle.jpg', '3D5F956E053C4E85B7D2681386E235D2');
 INSERT INTO `sys_user` VALUES (4, '赵六', 'zl', '长沙', 1, '程序员', '2e969742a7ea0c7376e9551d578e05dd', 4, '2021-04-10 11:06:40', 3, 1, 4, 1, '../resources/images/defaultusertitle.jpg', '6480EE1391E34B0886ACADA501E31145');

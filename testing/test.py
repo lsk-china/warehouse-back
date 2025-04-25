@@ -7,7 +7,7 @@ sess = requests.Session()
 
 def main():
     parser = argparse.ArgumentParser(prog="test.py", description="test utility")
-    parser.add_argument("--base", "-b", default="http://localhost:8080/")
+    parser.add_argument("--base", "-b", default="http://localhost:8081/")
     parser.add_argument("--api", "-a", action="append", nargs=3)
     parser.add_argument("--login", "-l", nargs=2, default=["system", "123456"])
     parser.add_argument("--para", "-p", nargs=2, action="append")

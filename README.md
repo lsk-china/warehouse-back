@@ -1,4 +1,4 @@
-# 基于spring boot的中小型仓库物流管理系统(springboot+mybatis-plus+shiro+mysql+layui前端框架)
+# 基于spring boot的中小型商超进销存管理系统(springboot+mybatis-plus+shiro+mysql+layui前端框架)
 ## 技术栈使用
 后端：springboot、mybatis-plus、shiro
 
