@@ -26,7 +26,7 @@ public interface StatisticsMapper {
             "            0.0\n" +
             "    ) as total_cost,\n" +
             "    ifnull(\n" +
-            "            (select sum(bus_outport.outportprice* bus_outport.number) from bus_outport where bus_outport.goodsid=bus_goods.id),\n" +
+            "            (select sum(bus_deliver.outportprice* bus_deliver.number) from bus_deliver where bus_deliver.goodsid=bus_goods.id),\n" +
             "            0.0\n" +
             "    ) as total_income,\n" +
             "    (select total_income - total_cost) as total_profit\n" +

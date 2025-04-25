@@ -4,10 +4,10 @@ import com.lp.sale.service.SaleService;
 import com.lp.sale.util.StatusCode;
 import com.lp.sys.common.WebUtils;
 import com.lp.sys.domain.User;
+import com.lp.warehouse.domain.Deliver;
 import com.lp.warehouse.domain.Goods;
-import com.lp.warehouse.domain.Outport;
+import com.lp.warehouse.mapper.DeliverMapper;
 import com.lp.warehouse.mapper.GoodsMapper;
-import com.lp.warehouse.mapper.OutportMapper;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -19,7 +19,7 @@ public class SaleServiceImpl implements SaleService {
     private GoodsMapper goodsMapper;
 
     @Resource
-    private OutportMapper outportMapper;
+    private DeliverMapper deliverMapper;
 
     @Override
     public void saleItem(Integer goodsId) {
@@ -41,12 +41,12 @@ public class SaleServiceImpl implements SaleService {
         goods.setNumber(goods.getNumber() - amount);
         goodsMapper.updateById(goods);
         User user = (User) WebUtils.getSession().getAttribute("user");
-        Outport outport = new Outport();
-        outport.setGoodsid(goodsId);
-        outport.setNumber(amount);
-        outport.setOutputtime(new Date());
-        outport.setOutportprice(goods.getPrice());
-        outport.setOperateperson(user.getName());
-        outportMapper.insert(outport);
+        Deliver deliver = new Deliver();
+        deliver.setGoodsid(goodsId);
+        deliver.setNumber(amount);
+        deliver.setOperateperson(user.getName());
+        deliver.setDeliverprice(goods.getPrice());
+        deliver.setDelivertime(new Date());
+        deliverMapper.insert(deliver);
     }
 }
