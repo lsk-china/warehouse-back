@@ -38,10 +38,10 @@ public class OutportServiceImpl extends ServiceImpl<OutportMapper, Outport> impl
     public void addOutPort(Integer id, Integer number, String remark) {
         //1,根据进货单ID查询进货单信息
         Inport inport = this.inportMapper.selectById(id);
-        //2,根据商品ID查询商品信息
-        Goods goods = this.goodsMapper.selectById(inport.getGoodsid());
-        goods.setNumber(goods.getNumber() - number);
-        this.goodsMapper.updateById(goods);
+//        //2,根据商品ID查询商品信息
+//        Goods goods = this.goodsMapper.selectById(inport.getGoodsid());
+//        goods.setNumber(goods.getNumber() - number);
+//        this.goodsMapper.updateById(goods);
         //3,添加退货单信息
         Outport entity = new Outport();
         entity.setGoodsid(inport.getGoodsid());
