@@ -21,13 +21,8 @@ public interface StatisticsMapper {
             "    bus_goods.goodsname,\n" +
             "    (select bus_provider.providername from bus_provider where bus_provider.id=bus_goods.providerid) as provider_name,\n" +
             "    bus_goods.price,\n" +
-            "    ifnull(\n" +
-            "            (" +
-            "               (select sum(bus_inport.inportprice * bus_inport.number) from bus_inport where bus_inport.goodsid=bus_goods.id),\n" +
-            "               - " +
-            "               (select sum(bus_outport.outportprice * bus_outport.number) from bus_outport where bus_outport.goodsid=bus_goods.id)" +
-            "            )," +
-            "            0.0\n" +
+            "    ifnull(" +
+            "       (select ((select sum(inportprice*number) from bus_inport where goodsid=bus_goods.id) - (select sum(outportprice*number) from bus_outport where goodsid=bus_goods.id))), 0.0" +
             "    ) as total_cost,\n" +
             "    ifnull(\n" +
             "            (" +
