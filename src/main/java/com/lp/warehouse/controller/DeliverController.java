@@ -75,8 +75,10 @@ public class DeliverController {
             QueryWrapper<Goods> queryWrapper = new QueryWrapper<>();
             queryWrapper.eq("id", deliverVo.getGoodsid());
             Goods goods = goodsService.getOne(queryWrapper);
-
-            goods.setNumber(goods.getNumber() + deliverVo.getNumber());
+            if (goods.getAvailable() == 0 || goods.getNumber() < deliverVo.getNumber()) {
+                return ResultObj.ADD_ERROR;
+            }
+            goods.setNumber(goods.getNumber() - deliverVo.getNumber());
 
             deliverVo.setDelivertime(new Date());
             User user = (User) WebUtils.getSession().getAttribute("user");

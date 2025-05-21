@@ -32,13 +32,17 @@ public class SaleServiceImpl implements SaleService {
         if (goods == null) {
             throw new StatusCode(404, "Goods Not Found");
         }
-        if (goods.getAvailable() != 1) {
-            throw new StatusCode(400, "Not available");
-        }
         if (goods.getNumber() < amount) {
             throw new StatusCode(400, "Not enough number");
         }
-        goods.setNumber(goods.getNumber() - amount);
+        if (goods.getAvailable() != 1) {
+            throw new StatusCode(400, "Not available");
+        }
+        int remaining = amount - goods.getNumber();
+        if (goods.getDangernum() >= remaining) {
+            goods.setAvailable(0);
+        }
+        goods.setNumber(remaining);
         goodsMapper.updateById(goods);
         User user = (User) WebUtils.getSession().getAttribute("user");
         Deliver deliver = new Deliver();

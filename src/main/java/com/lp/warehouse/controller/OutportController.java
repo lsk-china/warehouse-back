@@ -90,7 +90,14 @@ public class OutportController {
             QueryWrapper<Goods> queryWrapper1 = new QueryWrapper<>();
             queryWrapper1.eq("id", inport.getGoodsid());
             Goods goods = goodsService.getOne(queryWrapper1);
+            if (goods.getAvailable() == 0 || goods.getNumber() > inport.getNumber()) {
+                return ResultObj.OPERATE_ERROR;
+            }
             goods.setNumber(goods.getNumber() - inport.getNumber());
+            if (goods.getNumber() < goods.getDangernum()) {
+                goods.setAvailable(0);
+            }
+            this.goodsService.updateById(goods);
             this.outportService.addOutPort(id, number, remark);
             return ResultObj.OPERATE_SUCCESS;
         } catch (Exception e) {

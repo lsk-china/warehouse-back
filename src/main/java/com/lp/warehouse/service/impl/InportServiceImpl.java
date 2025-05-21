@@ -37,6 +37,11 @@ public class InportServiceImpl extends ServiceImpl<InportMapper, Inport> impleme
     public boolean save(Inport entity) {
         //根据商品编号查询商品
         Goods goods = goodsMapper.selectById(entity.getGoodsid());
+        boolean availableManualSetFlag = goods.getAvailable() == 0 && (goods.getNumber() > goods.getDangernum());
+        int remaining = goods.getNumber() + entity.getNumber();
+        if (!availableManualSetFlag && remaining > goods.getDangernum()) {
+            goods.setAvailable(1);
+        }
         goods.setNumber(goods.getNumber() + entity.getNumber());
         goodsMapper.updateById(goods);
         //保存进货信息
@@ -50,6 +55,16 @@ public class InportServiceImpl extends ServiceImpl<InportMapper, Inport> impleme
         //根据商品ID查询商品信息
         Goods goods = this.goodsMapper.selectById(entity.getGoodsid());
         //库存的算法  当前库存-进货单修改之前的数量+修改之后的数量
+        boolean availableManualSetFlag = goods.getAvailable() == 0 && (goods.getNumber() > goods.getDangernum());
+        int remaining = goods.getNumber() - inport.getNumber() + entity.getNumber();
+        if (remaining < 0) {
+            throw new RuntimeException("Cannot update: remaining is negative");
+        }
+        if (!availableManualSetFlag && remaining > goods.getDangernum()) {
+            goods.setAvailable(1);
+        } else if (remaining < goods.getDangernum() && goods.getAvailable() == 1) {
+            goods.setAvailable(0);
+        }
         goods.setNumber(goods.getNumber() - inport.getNumber() + entity.getNumber());
         this.goodsMapper.updateById(goods);
         //更新进货单
@@ -65,6 +80,12 @@ public class InportServiceImpl extends ServiceImpl<InportMapper, Inport> impleme
         Goods goods = this.goodsMapper.selectById(inport.getGoodsid());
         //库存的算法  当前库存-进货单数量
         goods.setNumber(goods.getNumber() - inport.getNumber());
+        if (goods.getNumber() < 0) {
+            throw new RuntimeException("Cannot remove: remaining is negative");
+        }
+        if (goods.getNumber() < goods.getDangernum() && goods.getAvailable() == 1) {
+            goods.setAvailable(0);
+        }
         this.goodsMapper.updateById(goods);
         return super.removeById(id);
     }
