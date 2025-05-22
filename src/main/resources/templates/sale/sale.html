@@ -185,8 +185,15 @@
                                     let elements = ``
                                     for (let goods of resp.data) {
                                         console.log(goods)
+                                        let onclick = goods.available === 1 ? `openBuyDialog(${goods.id}, ${goods.number})` : `alert('商品不可用!')`
+                                        console.log(onclick)
                                         elements += `
-<div class="goods-card layui-panel" id="goods-card-${goods.id}" onclick="openBuyDialog(${goods.id}, ${goods.number})">
+<div
+        class="goods-card layui-panel"
+        id="goods-card-${goods.id}"
+        onclick="${onclick}"
+        style="${goods.available === 0 ? 'filter: brightness(0.7)' : ''}"
+>
     <img class="goods-img" src=/imgs/"${goods.goodsimg}"/>
     <span class="goods-name">${goods.goodsname}</span>
     <span class="goods-price">价格:${goods.price}</span>
