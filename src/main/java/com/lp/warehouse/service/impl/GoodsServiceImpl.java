@@ -31,6 +31,15 @@ public class GoodsServiceImpl extends ServiceImpl<GoodsMapper, Goods> implements
     @Override
     public boolean updateById(Goods entity) {
         // TODO Auto-generated method stub
+        Integer id = entity.getId();
+        Goods goods = this.baseMapper.selectById(id);
+        boolean availableManualSetFlag = goods.getAvailable() == 0 && (goods.getNumber() > goods.getDangernum());
+        if (entity.getNumber() > entity.getDangernum() && !availableManualSetFlag) {
+            entity.setAvailable(1);
+        }
+        if (entity.getNumber() < entity.getDangernum()) {
+            entity.setAvailable(0);
+        }
         return super.updateById(entity);
     }
 
